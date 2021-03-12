@@ -4,12 +4,63 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:padding="10dp"
     tools:context=".MainActivity">
 
-    <com.developer.arsltech.barchartgraph.BarChart
-        android:id="@+id/cylinder_view"
-        android:layout_marginTop="200dp"
-        android:layout_width="300dp"
-        android:layout_height="200dp" />
+    <com.developer.arsltech.barchartgraph.PresetRadioGroup
+        android:id="@+id/preset_time_radio_group"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="3dp"
+        android:orientation="horizontal"
+        app:presetRadioCheckedId="@+id/preset_time_value_button_60">
+
+
+        <com.developer.arsltech.barchartgraph.PresetValueButton
+            android:id="@+id/preset_time_value_button_30"
+            style="@style/PresetLayoutButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:presetButtonUnitText="@string/unit_seconds"
+            app:presetButtonValueText="@string/title_time_preset_30" />
+
+        <com.developer.arsltech.barchartgraph.PresetValueButton
+            android:id="@+id/preset_time_value_button_60"
+            style="@style/PresetLayoutButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/preset_time_value_button_30"
+            app:presetButtonUnitText="@string/unit_seconds"
+            app:presetButtonValueText="@string/title_time_preset_60" />
+
+        <com.developer.arsltech.barchartgraph.PresetValueButton
+            android:id="@+id/preset_time_value_button_120"
+            style="@style/PresetLayoutButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/preset_time_value_button_30"
+            app:presetButtonUnitText="@string/unit_seconds"
+            app:presetButtonValueText="@string/title_time_preset_120" />
+
+        <com.developer.arsltech.barchartgraph.PresetValueButton
+            android:id="@+id/preset_time_value_button_160"
+            style="@style/PresetLayoutButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/preset_time_value_button_120"
+            android:layout_toEndOf="@id/preset_time_value_button_60"
+            app:presetButtonUnitText="@string/unit_seconds"
+            app:presetButtonValueText="@string/title_time_preset_160" />
+
+    </com.developer.arsltech.barchartgraph.PresetRadioGroup>
+
+    <TextView
+        android:id="@+id/tvContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@color/white"
+        android:textColor="@color/black" />
+
 </RelativeLayout>

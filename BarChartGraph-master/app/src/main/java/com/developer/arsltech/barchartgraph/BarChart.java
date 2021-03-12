@@ -50,6 +50,7 @@ public class BarChart extends View {
         super(context, attrs, defStyleAttr);
     }
 
+    @SuppressLint("DrawAllocation")
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
@@ -67,9 +68,10 @@ public class BarChart extends View {
          */
         canvas.drawLine(0, getHeight() - 40, getWidth(), getHeight() - 40, paint);
         Paint fgPaintSel = new Paint();
-        fgPaintSel.setColor(Color.GREEN);
+        fgPaintSel.setColor(Color.BLACK);
         fgPaintSel.setStyle(Paint.Style.STROKE);
-        fgPaintSel.setPathEffect(new DashPathEffect(new float[]{10f, 20f}, 1f));
+        fgPaintSel.setStrokeWidth(2f);
+        fgPaintSel.setPathEffect(new DashPathEffect(new float[]{5f, 10f}, 10f));
 
         canvas.drawLine(0, (getHeight() - 40) / 2, getWidth(), (getHeight() - 40) / 2, fgPaintSel);
         canvas.drawLine(0, 0, getWidth(), 0, fgPaintSel);
@@ -97,7 +99,7 @@ public class BarChart extends View {
          * Height = bottom-top
          * The width is fixed at 50
          */
-        paint.setColor(getResources().getColor(R.color.barchart));
+        //paint.setColor(getResources().getColor(R.color.barchart));
         paint.setTextSize(30);
         Paint textPaint = new Paint();
         textPaint.setColor(Color.RED);
@@ -106,11 +108,11 @@ public class BarChart extends View {
         if (mHeightList.size() != 0) {
             for (int i = 0; i < mHeightList.size(); i++) {
                 @SuppressLint("DrawAllocation") RectF rectF =
-                        new RectF((width + range) * i, getHeight() - 40 - lengthPerBar(mHeightList.get(i)),
-                                width + (width + range) * i, getHeight() - 40);
+                        new RectF(range + (width + range) * i, getHeight() - 40 - lengthPerBar(mHeightList.get(i)),
+                                range + width + (width + range) * i, getHeight() - 40);
                 canvas.drawRect(rectF, paint);
 
-                canvas.drawText("" + i, (width + range) * i, getHeight(), textPaint);
+                canvas.drawText("火", range + (width + range) * i + (range/2), getHeight(), textPaint);
             }
         }
     }

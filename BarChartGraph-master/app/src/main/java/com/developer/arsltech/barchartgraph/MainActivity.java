@@ -1,9 +1,12 @@
 package com.developer.arsltech.barchartgraph;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatEditText;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
@@ -18,10 +21,24 @@ public class MainActivity extends AppCompatActivity {
     private BarChart CylinderView;
     private List<Integer> list = new ArrayList<>();
 
+    PresetRadioGroup mSetDurationPresetRadioGroup;
+    TextView mSetDurationEditText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mSetDurationPresetRadioGroup = (PresetRadioGroup) findViewById(R.id.preset_time_radio_group);
+        mSetDurationEditText = findViewById(R.id.tvContent);
+        mSetDurationPresetRadioGroup.setOnCheckedChangeListener(new PresetRadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(View radioGroup, View radioButton, boolean isChecked, int checkedId) {
+                mSetDurationEditText.setText(((PresetValueButton) radioButton).getValue());
+            }
+        });
+
+        /*
 
         CylinderView = findViewById(R.id.cylinder_view);
 
@@ -48,8 +65,8 @@ public class MainActivity extends AppCompatActivity {
         list.add(30);
 
         CylinderView.setmHeightList(list);
-        CylinderView.setWidth(788/list.size()/2);
-        CylinderView.setRange(788/list.size()/2);
+        CylinderView.setWidth(20);
+        CylinderView.setRange((788-(20*list.size()))/22);*/
     }
 
 
